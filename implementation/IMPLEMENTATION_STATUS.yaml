@@ -1,0 +1,302 @@
+schema_version: '1.0'
+architecture_version: '6.6'
+current_phase: 11
+status: complete
+completed_phases:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+- 11
+current_phase_progress:
+  completed:
+  - gate_passed
+  - checkpoint
+  remaining: []
+tests:
+  total: 201
+  passing: 201
+  failing: 0
+  skipped: 0
+  last_run: '2026-10-12T06:29:34.216538+00:00'
+  reports:
+  - implementation/phase_11_regression.xml
+  - implementation/phase_11_final_targeted.xml
+  - implementation/phase_11_native_cli.xml
+benchmarks:
+  suite: phase_11
+  status: passed
+  cases: 16
+  threshold: 90
+  report: implementation/PHASE_REPORTS/phase_11_benchmark.json
+last_checkpoint:
+  type: repository_snapshot
+  id: 1bcacdf678e143cc89cc460ec705f06f
+  path: implementation/CHECKPOINTS/phase_11_1bcacdf678e143cc89cc460ec705f06f.zip
+  phase: 11
+phases:
+  0:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_0_gate.json
+  1:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_1_gate.json
+  2:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_2_gate.json
+  3:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_3_gate.json
+  4:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_4_gate.json
+  5:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_5_gate.json
+  6:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_6_gate.json
+  7:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_7_gate.json
+  8:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_8_gate.json
+  9:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_9_gate.json
+  10:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_10_gate.json
+  11:
+    status: complete
+    gate_report: implementation/PHASE_REPORTS/phase_11_gate.json
+  12:
+    status: not_started
+maintenance:
+  project_workspaces:
+    status: complete
+    completed_at: '2026-10-12T10:34:21.359123+00:00'
+    tests:
+      total: 106
+      passing: 106
+      failing: 0
+      skipped: 0
+      executions: 107
+      feature_cases: 26
+      reports:
+      - implementation/project_workspace_regression.xml
+      - implementation/project_workspace_native.xml
+      scope: Unit, bootstrap, transactions, OOXML file backend, project UX, native
+        QA, CLI build/revise/rollback
+    benchmark:
+      passed: true
+      cases: 16
+      report: implementation/PHASE_REPORTS/project_workspace_benchmark.json
+    feature_report: implementation/PHASE_REPORTS/project_workspace_feature.json
+    last_checkpoint:
+      type: repository_snapshot
+      id: 215fd0fdb31a4a29a96c988e54d7d1d1
+      path: implementation/CHECKPOINTS/project_workspaces_215fd0fdb31a4a29a96c988e54d7d1d1.zip
+    launch_entry: run.py
+    launcher_checks: 2
+  others:
+    status: blocked
+    feature_report: implementation/PHASE_REPORTS/others_feature.json
+    blocker: PowerPoint has one open presentation; private renderer refuses to own/close
+      it. Read-only probe also reports automation rights not granted. User asked to
+      save/close it; native gate is pending.
+    non_native_cases: 113
+    benchmark_cases: 16
+    native_pending_cases: 6
+    last_checkpoint:
+      kind: work_in_progress_snapshot
+      id: 05a74ba23463498db1cb19716dfbd55f
+      path: implementation/CHECKPOINTS/others_pending_05a74ba23463498db1cb19716dfbd55f.zip
+      validation: pending_native_qa
+  database_references:
+    status: blocked
+    updated_at: '2026-10-12T12:33:11.417829+00:00'
+    feature_report: implementation/PHASE_REPORTS/database_feature.json
+    non_native_cases: 235
+    feature_passed_cases: 18
+    benchmark_cases: 16
+    native_pending_cases: 1
+    blocker: PowerPoint has one open presentation; private native renderer refuses
+      to take ownership. User PPTs registered with verified hashes; slide indexing
+      pending.
+    migration_audit: library/references/manifests/database_migration.json
+    last_checkpoint:
+      kind: work_in_progress_snapshot
+      id: 6ff0478d8cdb4b22852b387f07041484
+      path: implementation/CHECKPOINTS/database_pending_6ff0478d8cdb4b22852b387f07041484.zip
+      validation: pending_native_qa
+  startup_ingestion_menu:
+    status: complete
+    completed_at: '2026-10-12T14:14:30.012974+00:00'
+    feature_report: implementation/PHASE_REPORTS/startup_ingestion_menu_feature.json
+    tests:
+      total: 4
+      passing: 4
+      failing: 0
+      skipped: 0
+      reports:
+      - implementation/startup_ingestion_menu_regression.xml
+    last_checkpoint:
+      type: repository_snapshot
+      id: 5b016f0a516b4560af664db8a2a437c4
+      path: implementation/CHECKPOINTS/startup_menu_5b016f0a516b4560af664db8a2a437c4.zip
+  python_run_launcher:
+    status: complete
+    completed_at: '2026-10-12T15:13:55.881776+00:00'
+    feature_report: implementation/PHASE_REPORTS/run_launcher_environment_feature.json
+    tests:
+      total: 5
+      passing: 5
+      failing: 0
+      skipped: 0
+      reports:
+      - implementation/run_launcher_environment_regression.xml
+    full_regression:
+      total: 265
+      passing: 243
+      failing: 22
+      report: implementation/PHASE_REPORTS/run_launcher_environment_full_suite.json
+      environment_limitations:
+      - PowerPoint COM access denied for native rendering/live automation.
+      - Sandbox denied Windows directory junction creation.
+    last_checkpoint:
+      type: repository_snapshot
+      id: 34fe4276aadc435495c905474e882c93
+      path: implementation/CHECKPOINTS/run_launcher_34fe4276aadc435495c905474e882c93.zip
+  terminal_startup:
+    status: complete
+    feature_report: implementation/PHASE_REPORTS/terminal_startup.json
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/terminal_startup_20261020.zip
+  venv_startup:
+    status: complete
+    feature_report: implementation/PHASE_REPORTS/venv_startup.json
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/venv_startup_20261020.zip
+  editor_startup:
+    status: configuration_verified_reload_pending
+    feature_report: implementation/PHASE_REPORTS/editor_startup.json
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/editor_startup_20261020.zip
+  reference_relocation:
+    status: path_repaired_native_pending_open_presentation
+    feature_report: implementation/PHASE_REPORTS/reference_relocation.json
+    focused_tests:
+      tests: 3
+      failures: 0
+      errors: 0
+      skipped: 0
+    regression_tests:
+      tests: 30
+      failures: 2
+      errors: 0
+      skipped: 0
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/reference_relocation_20261020.zip
+  interpreter_resolution:
+    status: configuration_and_venv_verified_reload_pending
+    feature_report: implementation/PHASE_REPORTS/interpreter_resolution_20261022.json
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/interpreter_resolution_20261022.zip
+  render_timeout:
+    status: verified
+    feature_report: implementation/PHASE_REPORTS/render_timeout_20261022.json
+    tests:
+      render_timeout_tests:
+        tests: 13
+        failures: 0
+        errors: 0
+        skipped: 0
+      render_recovery_unit:
+        tests: 7
+        failures: 0
+        errors: 0
+        skipped: 0
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/render_timeout_20261022.zip
+  startup_optimization:
+    status: startup_and_logic_verified_native_retest_pending
+    feature_report: implementation/PHASE_REPORTS/startup_optimization_20261022.json
+    tests:
+      tests: 265
+      failures: 0
+      errors: 0
+      skipped: 0
+    performance:
+      launcher:
+        seconds_to_menu: 0.2631
+        process_cpu_seconds: 0.2188
+        peak_working_set_mb: 21.93
+      cli:
+        seconds_to_menu: 0.2079
+        process_cpu_seconds: 0.1406
+        peak_working_set_mb: 20.89
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/startup_optimization_20261022.zip
+  style_fixes:
+    status: scoped_file_logic_verified_native_qa_and_ui_check_pending
+    feature_report: implementation/PHASE_REPORTS/style_fixes_20261022.json
+    tests:
+      tests: 40
+      failures: 0
+      errors: 0
+      skipped: 0
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/style_fixes_20261022.zip
+  target_updates:
+    status: same_target_logic_and_real_native_verified
+    feature_report: implementation/PHASE_REPORTS/target_updates_20261022.json
+    tests:
+      tests: 128
+      failures: 0
+      errors: 0
+      skipped: 0
+    native_cases: 3
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/target_updates_20261022.zip
+  workspace_cleanup:
+    status: verified
+    feature_report: implementation/PHASE_REPORTS/workspace_cleanup_20261024.json
+    tests:
+      tests: 42
+      errors: 0
+      failures: 0
+      skipped: 0
+    archived_fixture_count: 52
+    pytest_removed: true
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/workspace_cleanup_20261024.zip
+  launcher_recovery:
+    status: restored_and_verified
+    feature_report: implementation/PHASE_REPORTS/launcher_recovery_20261024.json
+    tests:
+      tests: 11
+      failures: 0
+      errors: 0
+      skipped: 0
+    last_checkpoint:
+      type: verified_maintenance_snapshot
+      path: implementation/CHECKPOINTS/launcher_recovery_20261024.zip

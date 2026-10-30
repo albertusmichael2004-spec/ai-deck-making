@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "annotation_id",
+    "slide_id",
+    "author",
+    "created_at",
+    "text",
+    "anchor",
+    "replies",
+    "resolved_target_ids",
+    "resolution_confidence",
+    "intent_class",
+    "constraints",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "annotation_id": {
+      "type": "string"
+    },
+    "slide_id": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "left_pt",
+        "top_pt"
+      ],
+      "properties": {
+        "left_pt": {
+          "type": ["number","null"]
+        },
+        "top_pt": {
+          "type": ["number","null"]
+        }
+      }
+    },
+    "replies": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "resolved_target_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "resolution_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "intent_class": {
+      "enum": [
+        "DESIGN_FEEDBACK",
+        "FACTUAL_CORRECTION",
+        "NEW_REQUIREMENT",
+        "DATA_UPDATE",
+        "BRAND_CHANGE",
+        "COPY_PREFERENCE",
+        "SCOPE_CHANGE",
+        "OTHER"
+      ]
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "discovered",
+        "planned",
+        "applied",
+        "blocked",
+        "ambiguous",
+        "ignored"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_id",
+          "score"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "parent_annotation_id": {
+      "type": "string"
+    }
+  }
+}

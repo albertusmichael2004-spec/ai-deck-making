@@ -1,0 +1,12 @@
+schema_version: '1.0'
+brand_id: default_consulting
+colors:
+  background: FFFFFF
+  foreground: 172B4D
+  accent: 176B87
+  secondary: 7BA7B8
+  negative: C7503D
+  grid: D9E2E8
+fonts: {family: Arial, fallback: Arial, title_pt: 28, body_pt: 18, label_pt: 14, source_pt: 12}
+grid: {margin_in: 0.55, gutter_in: 0.3, columns: 12, title_y_in: 0.35, title_height_in: 1.0, message_y_in: 1.6, content_y_in: 2.4, source_y_from_bottom_in: 0.55}
+density: {maximum_categories: 12, maximum_table_rows: 8, maximum_table_columns: 6, maximum_diagram_items: 8, maximum_title_characters: 160, maximum_message_characters: 220, maximum_title_line_characters: 60}

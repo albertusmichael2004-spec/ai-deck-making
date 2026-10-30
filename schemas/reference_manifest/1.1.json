@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pipeline_version",
+    "decks",
+    "aliases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.1"
+    },
+    "pipeline_version": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "object"
+    },
+    "decks": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/deck"
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "required": [
+        "slide_id",
+        "source_slide_id",
+        "slide_number",
+        "fingerprint",
+        "approval",
+        "library",
+        "artifacts",
+        "summary"
+      ],
+      "properties": {
+        "slide_id": {
+          "type": "string",
+          "pattern": "^slide_[a-f0-9]{32}$"
+        },
+        "slide_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/hash"
+        },
+        "approval": {
+          "enum": [
+            "unreviewed",
+            "approved",
+            "rejected",
+            "deprecated"
+          ]
+        },
+        "library": {
+          "const": "database"
+        },
+        "artifacts": {
+          "type": "object",
+          "required": [
+            "metadata",
+            "preview",
+            "structure"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    },
+    "deck": {
+      "type": "object",
+      "required": [
+        "reference_id",
+        "source_path",
+        "file_sha256",
+        "snapshot",
+        "library",
+        "slides",
+        "history"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string",
+          "pattern": "^ref_[a-f0-9]{32}$"
+        },
+        "file_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "snapshot": {
+          "type": "string"
+        },
+        "library": {
+          "const": "database"
+        },
+        "history": {
+          "type": "array"
+        },
+        "slides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/slide"
+          }
+        }
+      }
+    }
+  }
+}

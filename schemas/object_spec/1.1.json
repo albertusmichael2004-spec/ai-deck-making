@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "object_id",
+    "kind",
+    "x",
+    "y",
+    "width",
+    "height",
+    "protection",
+    "schema_version"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "text",
+        "shape",
+        "chart",
+        "table"
+      ]
+    },
+    "text": {
+      "type": "string"
+    },
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    },
+    "width": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "height": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "font_pt": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 400
+    },
+    "bold": {
+      "type": "boolean"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{6}$"
+    },
+    "fill": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{6}$"
+    },
+    "protection": {
+      "enum": [
+        "MUST_CHANGE",
+        "MAY_CHANGE",
+        "MUST_NOT_CHANGE"
+      ]
+    },
+    "role": {
+      "enum": [
+        "title",
+        "body",
+        "source",
+        "label",
+        "decoration",
+        "exhibit",
+        "annotation"
+      ]
+    },
+    "schema_version": {
+      "const": "1.1"
+    },
+    "font_family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "align": {
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "geometry": {
+      "enum": [
+        "rect",
+        "roundRect",
+        "ellipse",
+        "line",
+        "chevron",
+        "triangle"
+      ]
+    },
+    "chart": {
+      "type": "object"
+    },
+    "table": {
+      "type": "object"
+    },
+    "flip_h": {
+      "type": "boolean"
+    },
+    "flip_v": {
+      "type": "boolean"
+    }
+  }
+}

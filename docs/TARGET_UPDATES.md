@@ -1,0 +1,15 @@
+# Update the same working PowerPoint target
+
+`studio revise PROJECT --patch FILE --scope FILE` and validated run commits keep `projects/PROJECT/presentation/canonical.pptx` as the single managed working target. Imported originals remain immutable. Temporary candidates, recovery snapshots and native QA copies are internal artifacts, not new working decks.
+
+When PowerPoint is running without the target open, native QA opens its unique staging copy read-only and hidden, closes only that copy, and leaves the existing application running. Other open presentations do not block QA. Global PowerPoint alert/security preferences are not changed in a borrowed application.
+
+When the exact managed target is open, Studio pauses its AutoSave during the transaction. A user draft is retained through SaveCopyAs and saved through live save-existing authority before file revision; previously saved edits are registered as a new user source version. File hashing/copying uses compatible Windows read-sharing flags without unlocking or writing through another application's locks. Object fingerprints and source versions still detect stale patches.
+
+After the candidate passes the existing validation gates, Studio rechecks the open target's saved state, content fingerprint and disk fingerprint. It closes only that saved target, replaces canonical through the normal project commit, then reopens the same path at the prior slide. No SaveAs, Untitled copy, active-document guess or numbered replacement file is used. If the user edits during QA, the original remains open and the candidate is rejected. If replacement fails, the unchanged original path is reopened. A retained `work/target_updates/ID/target.json` records recovery state; `project recover PROJECT` reconciles durable file commit intent and restores a pending target refresh.
+
+The CLI now defaults `live attach PROJECT` to the project's canonical, opens that existing target if needed, and uses save_existing. `--save-policy manual` retains deliberately unsaved agent revisions; `--require-open` disables automatic opening. Explicit `--target` remains limited to the selected project's writable working files. Python callers of LiveSession still default to manual unless they select a save policy.
+
+Some Explorer previews expose entries in Presentations but deny Name/FullName automation. Target discovery skips these inaccessible objects and requires exact local or verified OneDrive identity; the probe reports them individually instead of declaring the entire application unavailable. COM apartment lifetime belongs to the terminal, not each target exchange.
+
+PowerPoint's [Open contract](https://learn.microsoft.com/en-us/office/vba/api/powerpoint.presentations.open) distinguishes opening an existing file (`Untitled=False`) from opening a copy. Microsoft also documents [automation failures associated with Explorer preview](https://learn.microsoft.com/zh-cn/answers/questions/5397135/ppt-slideshowwindow-%28unknown-member%29-invalid-reque). Studio does not change Explorer settings or close unidentified previews.

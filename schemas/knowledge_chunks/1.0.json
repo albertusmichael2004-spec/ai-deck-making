@@ -1,0 +1,4 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,"required":["schema_version","chunks"],
+  "properties":{"schema_version":{"const":"1.0"},"chunks":{"type":"array","items":{"type":"object","required":["chunk_id","package_id","original_path","source_sha256","source_role","trust","knowledge_policy","topic_id","text","locator","kind"],"properties":{"chunk_id":{"type":"string","minLength":1},"package_id":{"type":"string"},"original_path":{"type":"string"},"source_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"source_role":{"enum":["structured_knowledge_chunks","knowledge_manual","package_navigation"]},"trust":{"const":"untrusted_package_content"},"knowledge_policy":{"const":"reasoning_guidance_not_project_fact"},"topic_id":{"type":"string"},"text":{"type":"string","minLength":1},"locator":{"type":"string","minLength":1},"kind":{"enum":["playbook","manual"]}}}}}
+}

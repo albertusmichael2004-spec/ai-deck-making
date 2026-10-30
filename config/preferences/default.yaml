@@ -1,0 +1,5 @@
+schema_version: '1.0'
+prior_weight: 2
+half_life_days: 90
+implicit_strength: 0.25
+rerank_weight: 0.35

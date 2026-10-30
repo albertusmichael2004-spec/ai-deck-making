@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sources",
+    "nodes",
+    "dependencies",
+    "bindings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "sha256",
+          "original_path",
+          "materialized_path",
+          "retrieved_at",
+          "source_date",
+          "data_period",
+          "last_refresh",
+          "evidence_ids"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "original_path": {
+            "type": "string"
+          },
+          "materialized_path": {
+            "type": "string"
+          },
+          "retrieved_at": {
+            "type": "string"
+          },
+          "source_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data_period": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_refresh": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "type",
+          "status",
+          "confidence",
+          "assumptions"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "raw_fact",
+              "calculated_fact",
+              "interpretation",
+              "hypothesis",
+              "recommendation"
+            ]
+          },
+          "status": {
+            "enum": [
+              "current",
+              "stale",
+              "unverified",
+              "missing"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "assumptions": {
+            "type": "array"
+          },
+          "unit": {
+            "$ref": "../unit/1.0.json"
+          },
+          "supported_by": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "formula": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "raw_fact"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "source_id",
+                "locator",
+                "source_sha256",
+                "value",
+                "unit"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "calculated_fact"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "formula",
+                "variables",
+                "supported_by",
+                "value",
+                "unit"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "binding_id",
+          "evidence_ids",
+          "slide_id",
+          "exhibit_id"
+        ]
+      }
+    }
+  }
+}

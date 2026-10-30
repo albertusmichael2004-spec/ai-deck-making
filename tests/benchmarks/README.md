@@ -1,0 +1,1 @@
+Benchmarks run separately from normal pytest. Phase 0 supplies the runner's durable result contract; quality cases and thresholds are introduced in Phase 5 and the complete release gate in Phase 11. An empty suite cannot claim a quality pass.

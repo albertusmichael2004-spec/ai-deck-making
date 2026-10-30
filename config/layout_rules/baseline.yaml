@@ -1,0 +1,8 @@
+schema_version: '1.0'
+margin_in: 0.5
+title_height_in: 1.0
+title_font_pt: 28
+body_y_in: 1.8
+body_font_pt: 20
+foreground: '172B4D'
+background: 'FFFFFF'

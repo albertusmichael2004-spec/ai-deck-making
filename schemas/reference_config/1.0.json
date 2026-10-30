@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["schema_version","pipeline_version","sources","ranking"],
+  "properties":{
+    "schema_version":{"const":"1.0"},"pipeline_version":{"type":"string","minLength":1},
+    "sources":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["path","library"],"properties":{"path":{"type":"string","minLength":1},"library":{"enum":["external","approved_internal"]},"brand":{"type":"string"},"industry":{"type":"string"},"audience":{"type":"string"}}}},
+    "ranking":{"type":"object","additionalProperties":false,"required":["semantic","content_shape","visual","brand","approval"],"patternProperties":{"^(semantic|content_shape|visual|brand|approval)$":{"type":"number","minimum":0,"maximum":1}}}
+  }
+}

@@ -1,0 +1,9 @@
+schema_version: '1.0'
+geometry_tolerance_pt: 0.5
+text_overflow_tolerance_pt: 1.0
+minimum_font_pt: 12
+title_max_lines: 2
+overlap_fraction_limit: 0.15
+image_ratio_relative_tolerance: 0.02
+visual_pixel_tolerance: 2
+visual_changed_fraction_limit: 0.001

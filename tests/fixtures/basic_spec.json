@@ -1,0 +1,8 @@
+{
+  "brief": {"schema_version":"1.0","brief_id":"brief-test","audience":"Management","decision_required":"Review supplied analysis","objective":"Communicate a validated example","presentation_type":"consulting","page_budget":2,"locale":{"language":"en","currency":"IDR","number_format":"indonesia"},"research":{"mode":"off","freshness_requirement":"supplied","external_research_allowed":false,"breadth_budget":1,"depth_budget":1},"constraints":{"use_existing_template":false,"preserve_logo":true,"sources_required":false}},
+  "deck": {"schema_version":"1.0","deck_id":"deck-test","brief_id":"brief-test","core_answer":"This fixture verifies editable compilation","storyline":["overview","details"],"slide_ids":["s01","s02"],"canvas":{"width_in":13.333333,"height_in":7.5}},
+  "slides": [
+    {"schema_version":"1.0","slide_id":"s01","purpose":"overview","action_title":"A controlled fixture verifies native text","key_message":"The title and message remain editable","claim_ids":[],"exhibit":{"type":"text"},"layout":{"archetype":"baseline"},"insights":["No external facts are claimed"],"source_note_ids":[],"brand_profile":"default_consulting"},
+    {"schema_version":"1.0","slide_id":"s02","purpose":"details","action_title":"A scoped change preserves the remaining deck","key_message":"Mutation edits the selected object only","claim_ids":[],"exhibit":{"type":"text"},"layout":{"archetype":"baseline"},"insights":[],"source_note_ids":[],"brand_profile":"default_consulting"}
+  ]
+}

@@ -1,0 +1,30 @@
+from enum import StrEnum
+
+
+class ErrorCode(StrEnum):
+    RETRYABLE = "RETRYABLE"
+    FATAL = "FATAL"
+    USER_ACTION_REQUIRED = "USER_ACTION_REQUIRED"
+    CAPABILITY_UNAVAILABLE = "CAPABILITY_UNAVAILABLE"
+    DATA_VALIDATION_ERROR = "DATA_VALIDATION_ERROR"
+    SOURCE_CONFLICT = "SOURCE_CONFLICT"
+    RESEARCH_INCOMPLETE = "RESEARCH_INCOMPLETE"
+    LIVE_ATTACH_FAILED = "LIVE_ATTACH_FAILED"
+    LIVE_PRESENTATION_CONFLICT = "LIVE_PRESENTATION_CONFLICT"
+    LIVE_SELECTION_STALE = "LIVE_SELECTION_STALE"
+    COMMENT_ANCHOR_AMBIGUOUS = "COMMENT_ANCHOR_AMBIGUOUS"
+    COMMENT_BATCH_PARTIAL = "COMMENT_BATCH_PARTIAL"
+    RESEARCH_BUDGET_EXHAUSTED = "RESEARCH_BUDGET_EXHAUSTED"
+    SOURCE_ACCESS_ERROR = "SOURCE_ACCESS_ERROR"
+    FILE_CONFLICT = "FILE_CONFLICT"
+    SECURITY_BLOCK = "SECURITY_BLOCK"
+    QA_FAILURE = "QA_FAILURE"
+
+
+class StudioError(Exception):
+    def __init__(self, code: ErrorCode, message: str, **details):
+        super().__init__(message)
+        self.code, self.details = code, details
+
+    def as_dict(self):
+        return {"code": self.code.value, "message": str(self), "details": self.details}

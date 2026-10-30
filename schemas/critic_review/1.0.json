@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["schema_version","dimensions","slides","findings"],
+  "properties":{
+    "schema_version":{"const":"1.0"},
+    "dimensions":{"type":"object","additionalProperties":false,"required":["content_accuracy","narrative_clarity","visual_hierarchy","layout_integrity","brand_compliance","editability","source_integrity"],"properties":{"content_accuracy":{"$ref":"#/$defs/score"},"narrative_clarity":{"$ref":"#/$defs/score"},"visual_hierarchy":{"$ref":"#/$defs/score"},"layout_integrity":{"$ref":"#/$defs/score"},"brand_compliance":{"$ref":"#/$defs/score"},"editability":{"$ref":"#/$defs/score"},"source_integrity":{"$ref":"#/$defs/score"}}},
+    "slides":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["slide_id","message_score","observation"],"properties":{"slide_id":{"type":"string"},"message_score":{"$ref":"#/$defs/score"},"observation":{"type":"string","minLength":1}}}},
+    "findings":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["code","severity","slide_id","object_id","message","evidence_ids","repair_intent"],"properties":{"code":{"type":"string","minLength":1},"severity":{"enum":["BLOCKER","MAJOR","MINOR","STYLE"]},"slide_id":{"type":["string","null"]},"object_id":{"type":["string","null"]},"message":{"type":"string","minLength":1},"evidence_ids":{"type":"array","items":{"type":"string"},"uniqueItems":true},"repair_intent":{"type":"string"}}}}
+  },
+  "$defs":{"score":{"type":"number","minimum":0,"maximum":100}}
+}

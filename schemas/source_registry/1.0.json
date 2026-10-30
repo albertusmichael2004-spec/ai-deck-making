@@ -1,0 +1,6 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["schema_version","sources"],"properties":{"schema_version":{"const":"1.0"},"sources":{"type":"object","additionalProperties":{
+    "type":"object","required":["source_id","url","publisher","source_type","independence_group","sha256","retrieved_at","quality","document_path","original_bytes_path"],
+    "properties":{"source_id":{"type":"string"},"url":{"type":"string"},"publisher":{"type":"string"},"source_type":{"type":"string"},"independence_group":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"retrieved_at":{"type":"string"},"document_path":{"type":"string"},"original_bytes_path":{"type":"string"},"quality":{"type":"object","required":["authority","question_fit","eligible","definitive_primary","freshness_status"],"properties":{"authority":{"type":"number","minimum":0,"maximum":1},"question_fit":{"type":"number","minimum":0,"maximum":1},"eligible":{"type":"boolean"},"definitive_primary":{"type":"boolean"},"freshness_status":{"type":"string"}}}}
+  }}}}

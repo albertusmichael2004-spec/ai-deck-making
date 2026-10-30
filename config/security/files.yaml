@@ -1,0 +1,8 @@
+schema_version: '1.0'
+max_file_bytes: 536870912
+max_archive_entries: 10000
+max_archive_depth: 2
+max_archive_expanded_bytes: 1073741824
+max_compression_ratio: 1000
+allowed_extensions: [.pptx, .xlsx, .docx, .pdf, .png, .jpg, .jpeg, .txt, .md, .csv, .json, .jsonl, .yaml, .yml, .zip]
+roles: [canonical_target, supporting_source, reference, approved_asset, temporary_input, generated_output]

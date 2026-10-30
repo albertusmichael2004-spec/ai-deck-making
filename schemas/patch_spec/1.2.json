@@ -1,0 +1,404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "patch_id",
+    "operations"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.2"
+    },
+    "patch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "set_text"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "set_fill"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^[a-fA-F0-9]{6}$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "set_geometry"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "repair_chart_axis"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "string",
+                "const": "zero_origin"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "connector_to_shape"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "geometry"
+                ],
+                "properties": {
+                  "geometry": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "x",
+                      "y",
+                      "width",
+                      "height"
+                    ],
+                    "properties": {
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "width": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "height": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "set_gradient_fill"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "angle_deg",
+                  "stops"
+                ],
+                "properties": {
+                  "angle_deg": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 360
+                  },
+                  "stops": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 10,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "position",
+                        "color"
+                      ],
+                      "properties": {
+                        "position": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "color": {
+                          "type": "string",
+                          "pattern": "^[a-fA-F0-9]{6}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slide_id",
+              "object_id",
+              "operation",
+              "expected_fingerprint",
+              "value"
+            ],
+            "properties": {
+              "slide_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operation": {
+                "type": "string",
+                "const": "set_chart_colors"
+              },
+              "expected_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "value": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "series"
+                ],
+                "properties": {
+                  "series": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 256,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "index",
+                        "color",
+                        "points"
+                      ],
+                      "properties": {
+                        "index": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "color": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[a-fA-F0-9]{6}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "points": {
+                          "type": "array",
+                          "maxItems": 10000,
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "index",
+                              "color"
+                            ],
+                            "properties": {
+                              "index": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "color": {
+                                "type": "string",
+                                "pattern": "^[a-fA-F0-9]{6}$"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

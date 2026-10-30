@@ -1,0 +1,11 @@
+schema_version: '1.0'
+# A deployment may add verified publishers. Unlisted domains remain discovery leads.
+publishers:
+  science.nasa.gov:
+    publisher: NASA Science
+    source_type: official_documentation
+    independence_group: nasa
+  nasa.gov:
+    publisher: NASA
+    source_type: official_documentation
+    independence_group: nasa

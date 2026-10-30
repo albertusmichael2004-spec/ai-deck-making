@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "binding_id",
+    "evidence_ids",
+    "slide_id",
+    "exhibit_id",
+    "schema_version"
+  ],
+  "properties": {
+    "binding_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,127}$"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,127}$"
+      }
+    },
+    "slide_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,127}$"
+    },
+    "exhibit_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,127}$"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

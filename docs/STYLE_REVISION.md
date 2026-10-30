@@ -1,0 +1,16 @@
+# Scoped styling and native QA
+
+Use Studio file revision for gradients, connector conversion and chart palettes.
+`schemas/patch_spec/1.2.json` adds these operations without changing older contracts:
+
+- `connector_to_shape`: `{"geometry":{"x":1,"y":1,"width":3,"height":0.15}}` in inches. Converts only an existing connector to a rectangle, preserving its identity. Follow with a fill operation using the same original fingerprint.
+- `set_gradient_fill`: `{"angle_deg":0,"stops":[{"position":0,"color":"123456"},{"position":1,"color":"ABCDEF"}]}`. Two to ten stops, strictly increasing from 0 to 1.
+- `set_chart_colors`: `{"series":[{"index":0,"color":null,"points":[{"index":0,"color":"123456"},{"index":1,"color":"ABCDEF"}]}]}`. For filled bar, pie, doughnut, area and bubble charts, including native 3D variants where supported. Line/marker palettes are rejected. Series indexes are zero-based document order; point indexes use the native value cache. A non-null series color sets its fill; explicit point overrides remain unless targeted. Values, labels, formulas and embedded workbooks stay unchanged.
+
+Use `studio revise PROJECT --patch FILE --scope FILE` with patch_spec 1.2, or carry the patch in patch_plan 1.1 through PatchExecutor in the existing run workflow. Source fingerprints, protected objects, native rendering, deterministic QA, Critic and project commit gates still apply. The OOXML backend writes only a working candidate, never canonical directly. File authority must be restored before file revision. Live rollback does not support these style operations; live preflight rejects them before snapshot or mutation. Unsupported comments must not be silently approximated as solid fills.
+
+Native QA can borrow a running PowerPoint application, even when other presentations or the start screen are open. Only its unique read-only staging deck is closed. File revision keeps the same managed canonical path: an open user's draft is retained and saved before the transaction; after successful validation the saved target is briefly closed, atomically replaced through project commit, then reopened at the same path and slide. Conflicting user edits abort replacement. Native proof, deterministic checks and the existing Critic/recovery gates remain in place. See [same-target updates](TARGET_UPDATES.md). Unrelated documents with unavailable automation metadata are skipped. An actual target that denies automation still requires the normal Office/native preflight recovery; a separate deck is never a fallback.
+
+The Studio launcher enables Codex TUI approval/completion notifications with `notification_condition="always"` and `notification_method="bel"`. Workspace VS Code settings enable visual and audible terminal bells. Restart the CLI and reload the VS Code window to apply these settings. A terminal bell is not a guaranteed Windows toast, and the exact UI alert still needs an interactive check. Approval remains `on-request`.
+
+Sources: [Codex advanced configuration](https://learn.chatgpt.com/docs/config-file/config-advanced#notifications), [VS Code terminal configuration](https://github.com/microsoft/vscode/blob/main/src/vs/workbench/contrib/terminal/common/terminalConfiguration.ts).

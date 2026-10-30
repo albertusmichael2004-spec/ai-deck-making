@@ -1,0 +1,3 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,"required":["schema_version","conflicts"],
+  "properties":{"schema_version":{"const":"1.0"},"conflicts":{"type":"object","additionalProperties":{"type":"object","required":["conflict_id","status","reason","sources","question_id"],"properties":{"conflict_id":{"type":"string"},"status":{"enum":["resolved","conditional","unresolved","range"]},"reason":{"type":"string"},"sources":{"type":"array","items":{"type":"string"}},"question_id":{"type":"string"}}}}}}

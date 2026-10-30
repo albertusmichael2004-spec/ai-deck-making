@@ -1,0 +1,6 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,"required":["text","pattern"],
+  "properties":{
+    "schema_version":{"const":"1.0"},"text":{"type":"string","maxLength":8192},"pattern":{"type":"string","minLength":1,"maxLength":256},"event_id":{"type":["string","null"],"maxLength":256},"declared_type":{"type":["string","null"],"enum":[null,"DESIGN_FEEDBACK","FACTUAL_CORRECTION","NEW_REQUIREMENT","DATA_UPDATE","BRAND_CHANGE","COPY_PREFERENCE","SCOPE_CHANGE","OTHER"]},"polarity":{"type":["string","null"],"enum":[null,"positive","negative","neutral","deprecated"]},"signal":{"type":["string","null"]},"context":{"type":["object","null"]},"dimensions":{"type":"array","items":{"type":"string","maxLength":128}},"tags":{"type":"array","items":{"type":"string","maxLength":128}},"occurred_at":{"type":["string","null"]}
+  }
+}

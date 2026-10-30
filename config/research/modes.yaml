@@ -1,0 +1,11 @@
+schema_version: '1.0'
+modes:
+  'off': {max_queries: 0, max_fetches: 0, breadth: 0, depth: 0, max_iterations: 0, max_seconds: 0, max_tokens: 0}
+  quick: {max_queries: 4, max_fetches: 4, breadth: 1, depth: 1, max_iterations: 1, max_seconds: 120, max_tokens: 16000}
+  standard: {max_queries: 12, max_fetches: 16, breadth: 4, depth: 2, max_iterations: 3, max_seconds: 600, max_tokens: 64000}
+  deep: {max_queries: 32, max_fetches: 48, breadth: 8, depth: 4, max_iterations: 6, max_seconds: 1800, max_tokens: 160000}
+  exhaustive: {max_queries: 64, max_fetches: 96, breadth: 16, depth: 6, max_iterations: 10, max_seconds: 3600, max_tokens: 320000}
+minimum_quality: 0.7
+minimum_fit: 0.75
+independent_sources: 2
+max_low_gain_iterations: 2

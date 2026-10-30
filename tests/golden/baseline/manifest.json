@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "approved": true,
+  "reviewed_by": "implementing_agent",
+  "review": "Both actual PowerPoint PNGs visually inspected: complete text, no overflow, readable hierarchy, native editable input. Controlled baseline only; no consulting quality score claimed.",
+  "renderer": "WindowsPowerPoint",
+  "renderer_version": "16.0",
+  "resolution": [
+    1600,
+    900
+  ],
+  "font": "Arial",
+  "input_sha256": "24b92492a32c5ae2cd73e2ba1a2bb63a0089fac56b1219beefd7309382973327",
+  "spec": "tests/fixtures/basic_spec.json",
+  "pixel_tolerance": 2,
+  "changed_fraction_limit": 0.001,
+  "spec_sha256": "ba7a498b64ffa39966f1557ba888c5aa8b575b4f677f3236b671ce2ebbf5e9ff"
+}

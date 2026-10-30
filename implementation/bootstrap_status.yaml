@@ -1,0 +1,44 @@
+schema_version: '1.0'
+status: complete
+original_files_verified: 1124
+recovered_files:
+- path: ALL_MATERIALS_START_HERE.md
+  sha256: 2d5de824d4040197048c4e85d66820d219c5b9a6503181bded4111be2ffef409
+  source_archive: Complete_Consulting_and_Deck_Making_Knowledge.zip
+  member: ALL_MATERIALS_START_HERE.md
+- path: ALL_MATERIALS_MANIFEST.json
+  sha256: fc0150fe59d43cc73b6e5151fa5a411caa24237bd2581c32c5941933f31144ad
+  source_archive: Complete_Consulting_and_Deck_Making_Knowledge.zip
+  member: ALL_MATERIALS_MANIFEST.json
+archive_aliases:
+- alias: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Complete_Consulting_and_Deck_Making_Knowledge.zip
+  archive: library/knowledge/packages/consulting_deck_knowledge_v1/archives/Complete_Consulting_and_Deck_Making_Knowledge.zip
+  kind: byte_identical_compatibility_copy
+  exclude_ingestion: true
+- alias: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Presentation_Knowledge_53_Topics.zip
+  archive: library/knowledge/packages/consulting_deck_knowledge_v1/archives/Presentation_Knowledge_53_Topics.zip
+  kind: byte_identical_compatibility_copy
+  exclude_ingestion: true
+relative_links_checked: 239
+relative_links_broken: 0
+canonical_manifest_files_verified: 668
+path_mapping:
+  _Agent Training: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/_Agent
+    Training
+  _Production_Tools: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/_Production_Tools
+  _Reference Library: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/_Reference
+    Library
+  Complete_Consulting_and_Deck_Making_Knowledge.zip: library/knowledge/packages/consulting_deck_knowledge_v1/archives/Complete_Consulting_and_Deck_Making_Knowledge.zip
+  Consulting Knowledge: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Consulting
+    Knowledge
+  Data Visualization Materials: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Data
+    Visualization Materials
+  Design and Layout Materials: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Design
+    and Layout Materials
+  Presentation_Knowledge_53_Topics.zip: library/knowledge/packages/consulting_deck_knowledge_v1/archives/Presentation_Knowledge_53_Topics.zip
+  Slide-Making Materials: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/Slide-Making
+    Materials
+  START_HERE.md: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/START_HERE.md
+  START_HERE_53_Materials.pdf: library/knowledge/packages/consulting_deck_knowledge_v1/original_package/START_HERE_53_Materials.pdf
+immutable_originals: true
+windows_extended_paths: true

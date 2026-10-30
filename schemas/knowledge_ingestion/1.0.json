@@ -1,0 +1,4 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["schema_version","package_id","fingerprint","files","chunks","contracts","topics","roles","artifacts","evaluation_isolation","production_scripts_executed","archives_ingested"],
+  "properties":{"schema_version":{"const":"1.0"},"package_id":{"type":"string","minLength":1},"fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},"files":{"type":"integer","minimum":1},"chunks":{"type":"integer","minimum":1},"contracts":{"type":"integer","minimum":0},"topics":{"type":"integer","minimum":0},"roles":{"type":"object"},"artifacts":{"type":"object","minProperties":6,"additionalProperties":{"type":"object","required":["path","sha256"],"properties":{"path":{"type":"string"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}}}},"evaluation_isolation":{"const":true},"production_scripts_executed":{"const":0},"archives_ingested":{"const":0}}
+}

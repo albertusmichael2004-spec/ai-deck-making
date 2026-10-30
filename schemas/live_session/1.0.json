@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "project_id",
+    "target",
+    "presentation_id",
+    "generation_id",
+    "status",
+    "save_policy",
+    "base_disk",
+    "last_live_fingerprint",
+    "history"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "presentation_id": {
+      "type": "string"
+    },
+    "generation_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "detached"
+      ]
+    },
+    "save_policy": {
+      "enum": [
+        "manual",
+        "save_copy",
+        "save_existing"
+      ]
+    },
+    "base_disk": {
+      "type": "object"
+    },
+    "last_live_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "target_disk_fingerprint": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "last_valid_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "autosave_policy": {
+      "type": "object"
+    }
+  }
+}

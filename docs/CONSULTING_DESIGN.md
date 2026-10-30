@@ -1,0 +1,15 @@
+# Consulting design and file-mode workflow
+
+Phase 6 extends the existing compiler and evidence context. Legacy 1.0 IR and baseline render goldens remain supported; native business objects use ObjectSpec 1.1, and explicit template selection uses DeckSpec 1.1. BrandProfile 1.0 validates token structure, readable typography hierarchy and reserved grid geometry.
+
+After `studio reason`, call `studio design PROJECT --request REQUEST.json`. The request contains the original `brief` plus optional `exhibits`, keyed by argument identity. Each data exhibit supplies registered category/value evidence IDs (or table cell IDs), a unit and period. A `relationship` selects a core chart; an explicit conflicting chart type is rejected. The planner rechecks narrative QA and interpretation lineage, registers stable bindings, and writes `state/design_spec.json`. Rerunning the same plan is idempotent.
+
+Then call `studio build PROJECT --spec projects/PROJECT/state/design_spec.json`. Build compiles a working copy, renders it through installed PowerPoint, independently rereads source facts and checks native chart values, categories, chart caches, editable workbook ranges, bubble-size references and bridge labels before the existing transaction can replace canonical.
+
+Bar, column, line, area, pie, stacked bar, scatter, bubble, waterfall and bridge charts are editable native charts with embedded workbooks. Tables/matrices are native tables; timelines, roadmaps, issue trees, scenarios and recommendation structures use editable native shapes/text. Waterfalls use seven floating stacked series with explicit original movement labels, including zero crossings. Negative values retain their assigned fill; scatter points do not imply a connecting trajectory.
+
+Source notes carry the original file/period, or publisher/URL for immutable research snapshots. A data binding covers exactly the cells actually shown. Category/value pairs must share verified source-record lineage; ambiguous aggregate/cross-source label associations require a future explicit association contract and are rejected. Hypothetical scenarios remain conditional text unless supplied quantitative evidence supports a bound table/chart.
+
+The adaptive compiler chooses a readable single-exhibit or chart/insight layout. Brand tokens control margins, gutter, typography, colors and density limits. Long titles receive word-boundary line breaks within two lines; excessive content fails for rewriting/splitting instead of shrinking below the minimum font size. Native QA remains the final overflow authority. An unavailable brand font selects its declared installed fallback and records a warning; unavailable fallback also fails.
+
+Templates must be registered/readable, select a reachable layout, and match the requested canvas. New builds retain template masters/layouts/themes/media without reusing old content slides. Unknown slide-referencing extensions fail explicitly. Source templates are never overwritten; scoped edits continue to preserve untouched package parts through the original backend.

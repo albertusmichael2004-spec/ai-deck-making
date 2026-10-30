@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "object_id",
+    "kind",
+    "x",
+    "y",
+    "width",
+    "height",
+    "protection"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "text",
+        "shape"
+      ]
+    },
+    "text": {
+      "type": "string"
+    },
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    },
+    "width": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "height": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "font_pt": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 400
+    },
+    "bold": {
+      "type": "boolean"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{6}$"
+    },
+    "fill": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{6}$"
+    },
+    "protection": {
+      "enum": [
+        "MUST_CHANGE",
+        "MAY_CHANGE",
+        "MUST_NOT_CHANGE"
+      ]
+    },
+    "role": {
+      "enum": [
+        "title",
+        "body",
+        "source",
+        "label",
+        "decoration"
+      ]
+    }
+  }
+}

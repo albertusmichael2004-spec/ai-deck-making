@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["schema_version","event_id","request_sha256","text","pattern","context","type","polarity","learnable","implicit","signal","dimensions","tags","occurred_at","strength"],
+  "properties":{
+    "schema_version":{"const":"1.0"},"event_id":{"type":"string","minLength":1,"maxLength":256},"request_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"text":{"type":"string","maxLength":8192},"pattern":{"type":"string","minLength":1,"maxLength":256},
+    "context":{"type":"object","additionalProperties":false,"required":["user_id","project_id","brand"],"patternProperties":{"^(user_id|project_id|brand)$":{"type":"string","minLength":1,"maxLength":128}}},
+    "type":{"enum":["DESIGN_FEEDBACK","FACTUAL_CORRECTION","NEW_REQUIREMENT","DATA_UPDATE","BRAND_CHANGE","COPY_PREFERENCE","SCOPE_CHANGE","OTHER"]},"polarity":{"enum":["positive","negative","neutral","deprecated"]},"learnable":{"type":"boolean"},"implicit":{"type":"boolean"},"signal":{"type":["string","null"]},"dimensions":{"type":"array","items":{"type":"string","maxLength":128}},"tags":{"type":"array","items":{"type":"string","maxLength":128}},"occurred_at":{"type":"string"},"strength":{"type":"number","exclusiveMinimum":0,"maximum":1}
+  }
+}

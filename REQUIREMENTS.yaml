@@ -1,0 +1,339 @@
+schema_version: '1.0'
+architecture_version: '6.6'
+source: docs/AI_Presentation_Studio_Architecture_v6_6.md
+phases:
+- phase: 0
+  title: Phase 0 — Runtime Kernel, Contracts, Security & Test Harness
+  requirements:
+  - '**pre-code workspace bootstrap:** enumerate every pre-existing root file/folder
+    before normal coding, identify the existing consulting/deck-making knowledge package,
+    fingerprint/classify it, generate a migration plan, and safely relocate recognized
+    training material into `library/knowledge/packages/` while preserving internal
+    relative structure,'
+  - preserve ZIP package backups under package `archives/` but prevent duplicate ingestion
+    when equivalent extracted content is registered,
+  - create bootstrap inventory/status/marker files so migration is idempotent and
+    later runs do not mistake repository source code for training material,
+  - canonical repository/library/project/runtime folder contract,
+  - project state and persistent implementation state,
+  - schemas and schema-versioning rules,
+  - capability manifests,
+  - stable tool contracts,
+  - permissions and read/write roots,
+  - file registration and MIME/path validation,
+  - transaction model,
+  - snapshots and rollback,
+  - atomic commit,
+  - external-edit/conflict detection primitives,
+  - structured errors,
+  - logging and telemetry foundations,
+  - unit/integration test harness,
+  - golden fixture conventions,
+  - benchmark harness skeleton without requiring full consulting benchmarks yet.
+  status: complete
+  test_evidence:
+  - implementation/phase_0_regression.xml
+- phase: 1
+  title: Phase 1 — Presentation IR, File-Mode Backend & Basic Compiler
+  requirements:
+  - BriefSpec,
+  - DeckSpec,
+  - SlideSpec,
+  - schema validation,
+  - deterministic object IDs,
+  - baseline layout compiler,
+  - create/edit/open/save PPTX,
+  - backend abstraction,
+  - OOXML/file-mode backend,
+  - basic PowerPoint-native backend adapter contract,
+  - object inspection and mutation primitives,
+  - scope protection primitives,
+  - round-trip preservation tests.
+  - attach to a running PowerPoint instance,
+  - enumerate open presentations,
+  - inspect active slide,
+  - read current selection metadata,
+  - read comments if exposed by the installed PowerPoint object model,
+  - save a safe test copy.
+  status: complete
+  test_evidence:
+  - implementation/phase_1_regression.xml
+- phase: 2
+  title: Phase 2 — Rendering, Deterministic QA & Transactional Presentation Safety
+  requirements:
+  - render actual slides,
+  - preview generation,
+  - deterministic geometry QA,
+  - text overflow detection,
+  - out-of-bounds detection,
+  - overlap rules,
+  - image/stretch checks,
+  - font and title-line rules,
+  - protected-object regression checks,
+  - before/after comparison,
+  - golden render tests,
+  - visual regression infrastructure,
+  - transaction validation before commit,
+  - rollback on failed mutation,
+  - canonical/working-copy separation,
+  - file locking and stale-state detection,
+  - crash-safe recovery.
+  status: complete
+  test_evidence:
+  - implementation/phase_2_regression.xml
+- phase: 3
+  title: Phase 3 — Data, Document & Evidence Engine
+  requirements:
+  - spreadsheet ingestion,
+  - document ingestion,
+  - table/data extraction,
+  - calculation engine,
+  - EvidenceGraph,
+  - source lineage,
+  - evidence IDs,
+  - data bindings,
+  - dependency graph,
+  - freshness metadata,
+  - calculation provenance,
+  - refresh behavior,
+  - claim-to-evidence registration,
+  - numerical verification primitives,
+  - evidence inventory and evidence-gap detection.
+  status: complete
+  test_evidence:
+  - implementation/phase_3_regression.xml
+  - implementation/phase_3_final_validation.xml
+- phase: 4
+  title: Phase 4 — Deep Research Engine
+  requirements:
+  - ResearchPlan,
+  - ResearchLedger,
+  - SourceRegistry,
+  - ConflictRegistry,
+  - research modes (`off`, `quick`, `standard`, `deep`, `exhaustive`, `auto`),
+  - independent breadth and depth budgets,
+  - research-question decomposition,
+  - hypothesis-driven query planning,
+  - query diversification,
+  - broad discovery,
+  - source chaining,
+  - primary-source chasing,
+  - page/document extraction,
+  - source-quality and question-fit classification,
+  - deduplication and syndication detection,
+  - triangulation,
+  - contradiction detection,
+  - source-conflict resolution,
+  - counter-hypothesis / disconfirming-evidence search,
+  - iterative follow-up research,
+  - evidence-sufficiency scoring,
+  - explicit stop conditions,
+  - incremental refresh and caching,
+  - research prompt-injection isolation,
+  - provenance handoff into EvidenceGraph.
+  status: complete
+  test_evidence:
+  - implementation/phase_4_regression.xml
+  - implementation/phase_4_final_validation.xml
+- phase: 5
+  title: Phase 5 — Consulting Knowledge & Reasoning Engine
+  requirements:
+  - consulting knowledge store and retrieval contract,
+  - package-aware manual batch ingestion of the migrated multi-format consulting/slidecraft/data-visualization/design
+    corpus,
+  - native role-aware handling of PDF/MD/JSON/JSONL/CSV/TXT artifacts, with production-tool
+    scripts kept inert and ZIP archives excluded from duplicate ingestion,
+  - validation/reuse of existing package chunks, topic indexes, source maps, and agent
+    output contracts where compatible,
+  - normalized playbooks/chunks/contracts, provenance mappings, evaluation isolation,
+    and retrieval indexes,
+  - hypothesis-driven problem solving,
+  - issue decomposition,
+  - MECE checks,
+  - Pyramid Principle,
+  - SCQA,
+  - answer-first reasoning,
+  - claim -> evidence -> implication logic,
+  - recommendation logic,
+  - prioritization logic,
+  - page-budget planning,
+  - appendix planning,
+  - executive summary generation,
+  - StorylineGraph,
+  - action-title generation,
+  - narrative QA.
+  status: complete
+  test_evidence:
+  - implementation/phase_5_regression.xml
+  - implementation/phase_5_final_validation.xml
+- phase: 6
+  title: Phase 6 — Consulting Exhibits, Charts & Design System
+  requirements:
+  - chart-selection logic,
+  - core business charts,
+  - waterfalls,
+  - bridges,
+  - tables,
+  - matrices,
+  - timelines,
+  - issue trees,
+  - scenario exhibits,
+  - recommendation exhibits,
+  - roadmap exhibits,
+  - chart annotation,
+  - source-note placement,
+  - brand profiles,
+  - grid systems,
+  - layout archetypes,
+  - adaptive layout compiler,
+  - density management,
+  - typography hierarchy,
+  - design constraints and fallbacks.
+  status: complete
+  test_evidence:
+  - implementation/phase_6_regression.xml
+  - implementation/phase_6_final_validation.xml
+- phase: 7
+  title: Phase 7 — Reference Intelligence
+  requirements:
+  - manual batch reference-ingestion command,
+  - scan configured reference folders in one run,
+  - file/deck fingerprinting,
+  - duplicate detection,
+  - slide-level fingerprints where reliable,
+  - incremental re-ingestion,
+  - render/index reference slides,
+  - semantic metadata,
+  - visual metadata,
+  - structural metadata,
+  - element graph extraction where feasible,
+  - internal/external library separation,
+  - approved-slide promotion,
+  - ingestion manifests,
+  - idempotent reruns,
+  - 'progressive runtime retrieval:'
+  - reference-ranking logic based on semantic fit, content shape, visual structure,
+    brand fit, and approval history.
+  status: complete
+  test_evidence:
+  - implementation/phase_7_regression.xml
+  - implementation/phase_7_final_validation.xml
+- phase: 8
+  title: Phase 8 — Independent Critic & Preference Learning
+  requirements:
+  - logically isolated Critic context,
+  - semantic QA rubric,
+  - consulting-quality scoring,
+  - slide-message scoring,
+  - hierarchy/balance/readability review,
+  - chart-to-message alignment checks,
+  - blocker/major/minor/style severity classification,
+  - feedback classifier,
+  - positive/negative/neutral/deprecated feedback events,
+  - implicit approval/rejection signals,
+  - preference-state persistence,
+  - reference/layout reranking using preference state.
+  status: complete
+  test_evidence:
+  - implementation/phase_8_regression.xml
+  - implementation/phase_8_final_deterministic.xml
+  - implementation/phase_8_native.xml
+- phase: 9
+  title: Phase 9 — Autonomous Revision & Incremental Recompilation
+  requirements:
+  - PatchPlan,
+  - scoped patch application,
+  - dependency-aware incremental recompilation,
+  - deterministic + semantic repair loops,
+  - iteration budgets,
+  - repair prioritization by severity,
+  - crash resume,
+  - no-op detection,
+  - repair regression checks,
+  - protected-scope enforcement,
+  - evidence/claim dependency refresh after analytical edits,
+  - safe commit only after post-repair QA passes.
+  status: complete
+  test_evidence:
+  - implementation/phase_9_regression.xml
+  - implementation/phase_9_final_deterministic.xml
+- phase: 10
+  title: Phase 10 — Live PowerPoint Collaboration, Selection & Comment-Driven Revision
+  requirements:
+  - attach to already-running PowerPoint,
+  - detect/open target presentation safely,
+  - treat open in-memory presentation state as working authority while live mode is
+    active,
+  - live presentation inspection,
+  - active slide capture,
+  - '`SelectionContext`,'
+  - selected-shape/text/table/chart scope capture,
+  - live comments/replies capture where supported,
+  - '`AnnotationInstruction`,'
+  - Annotation Resolver,
+  - comment-to-slide/object target resolution,
+  - confidence scoring for ambiguous comment targets,
+  - '`CommentLedger`,'
+  - new/unprocessed comment detection,
+  - author/scope filtering,
+  - comment-driven batch revision,
+  - preserve original comments by default,
+  - optional comment acknowledgment/status metadata,
+  - live-vs-file mode mutual exclusion,
+  - object/slide fingerprint recheck immediately before mutation,
+  - concurrent user-edit detection,
+  - transaction guard,
+  - live snapshot/recovery,
+  - explicit save policy,
+  - unsaved-change preservation,
+  - fallback to safe file mode when live capabilities are unavailable.
+  status: complete
+  test_evidence:
+  - implementation/phase_10_regression.xml
+  - implementation/phase_10_final_deterministic.xml
+  - implementation/phase_10_cleanup_native.xml
+- phase: 11
+  title: Phase 11 — Full-System Benchmark, Hardening & V1 Release Gate
+  requirements:
+  - full end-to-end regression suite,
+  - representative multi-industry consulting benchmark cases,
+  - benchmark runner and result persistence,
+  - deterministic benchmark checks,
+  - qualitative judge/Critic benchmark rubric,
+  - numerical correctness scoring,
+  - evidence-grounding scoring,
+  - reasoning/storyline scoring,
+  - exhibit-selection scoring,
+  - visual-quality scoring,
+  - source/citation compliance,
+  - hard-failure rules,
+  - golden-deck comparison,
+  - live PowerPoint integration tests on supported Windows environments,
+  - comment/selection E2E tests,
+  - crash/recovery tests,
+  - security/adversarial prompt-injection tests,
+  - corrupted/hostile file tests,
+  - performance and token/cost telemetry,
+  - caching validation,
+  - installation/setup smoke tests,
+  - documentation validation,
+  - release checklist.
+  status: complete
+  test_evidence:
+  - implementation/phase_11_regression.xml
+  - implementation/phase_11_final_targeted.xml
+  - implementation/phase_11_native_cli.xml
+- phase: 12
+  title: Phase 12 — Broader Creative Capabilities (Post-V1 Optional)
+  requirements:
+  - internet image retrieval for visual assets,
+  - image generation/editing,
+  - richer infographics,
+  - concept visuals,
+  - UI/UX concepts **as presentation content**,
+  - product visuals,
+  - broader non-consulting deck archetypes.
+  - '**V1 implementation:** Phase 0 through Phase 11.'
+  - '**Optional post-v1 expansion:** Phase 12.'
+  status: not_started
+  test_evidence: []

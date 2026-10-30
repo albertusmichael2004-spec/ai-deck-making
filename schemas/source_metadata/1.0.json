@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "../unit/1.0.json"
+      }
+    },
+    "source_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "data_period": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "required": [
+    "schema_version"
+  ]
+}

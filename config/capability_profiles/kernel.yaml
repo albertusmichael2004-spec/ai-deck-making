@@ -1,0 +1,58 @@
+schema_version: '1.0'
+implemented_phase: 11
+available:
+- project.open
+- project.snapshot
+- project.begin
+- project.commit
+- project.rollback
+- project.detect_conflict
+- files.inspect
+- files.materialize
+- presentation.inspect
+- presentation.apply_spec
+- presentation.apply_patch
+- presentation.render
+- presentation.validate
+- data.analyze
+- data.calculate
+- data.bind
+- data.refresh
+- evidence.register
+- evidence.resolve
+- evidence.trace
+- research.search
+- research.extract
+- knowledge.ingest
+- knowledge.retrieve
+- reasoning.plan
+- presentation.design
+- presentation.native_charts
+- presentation.native_tables
+- presentation.template_compile
+- references.ingest
+- references.query
+- references.load
+- references.promote
+- presentation.critic
+- preferences.record
+- preferences.rerank
+- presentation.autorepair
+- presentation.incremental_compile
+- evidence.analytical_refresh
+- orchestration.run
+- presentation.attach_live
+- presentation.live_selection
+- presentation.live_comments
+- presentation.live_recovery
+- presentation.same_target_commit
+- presentation.shared_read
+- presentation.gradient_fill
+- presentation.connector_to_shape
+- presentation.chart_colors
+unavailable: {}
+native_requirements:
+  platform: Windows
+  PowerPoint: installed; native QA supports a running application and owned read-only staging copies
+  sandbox: COM requires approved execution outside Codex sandbox
+product_version: 1.0.0

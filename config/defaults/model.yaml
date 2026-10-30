@@ -1,0 +1,7 @@
+schema_version: '1.0'
+provider: codex_cli
+model: null
+reasoning_effort: high
+timeout_seconds: 120
+source: configured_user_model_when_available
+search_only: true

@@ -1,0 +1,51 @@
+schema_version: '1.0'
+repository_directories: [docs, src, schemas, config, tests, implementation, scripts, library, projects, runtime]
+library_directories:
+  - library/knowledge/packages
+  - library/knowledge/normalized/topics
+  - library/knowledge/normalized/chunks
+  - library/knowledge/normalized/playbooks
+  - library/knowledge/normalized/contracts
+  - library/knowledge/provenance/source_maps
+  - library/knowledge/provenance/catalogs
+  - library/knowledge/provenance/research_records
+  - library/knowledge/provenance/manifests
+  - library/knowledge/evaluations/exercises
+  - library/knowledge/evaluations/eval_cases
+  - library/knowledge/evaluations/holdouts
+  - library/knowledge/index/topic_index
+  - library/knowledge/index/semantic_index
+  - library/knowledge/index/retrieval_metadata
+  - library/knowledge/ingestion/manifests
+  - library/knowledge/ingestion/status
+  - library/knowledge/ingestion/logs
+  - library/references/database/originals
+  - library/references/database/previews
+  - library/references/database/metadata
+  - library/references/index
+  - library/references/manifests
+  - library/brands/default_consulting
+  - library/preferences/feedback_events
+  - library/preferences/preference_state
+  - library/preferences/user_rules
+  - library/cache
+project_directories:
+  - input/sources
+  - input/assets
+  - input/target
+  - references/originals
+  - state/research
+  - state/slides
+  - state/interaction
+  - presentation
+  - work/transactions
+  - work/temp
+  - work/generated_assets
+  - work/research_cache
+  - output/renders
+  - output/qa
+  - history/snapshots
+  - history/iterations
+  - history/patches
+  - history/feedback
+  - logs

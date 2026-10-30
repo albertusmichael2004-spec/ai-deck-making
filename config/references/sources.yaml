@@ -1,0 +1,5 @@
+schema_version: '1.1'
+pipeline_version: '1.0'
+sources:
+  - {path: library/references/database/originals, library: database, brand: unknown, industry: unknown, audience: unknown}
+ranking: {semantic: 0.35, content_shape: 0.2, visual: 0.15, brand: 0.15, approval: 0.15}

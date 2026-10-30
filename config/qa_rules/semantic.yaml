@@ -1,0 +1,4 @@
+schema_version: '1.0'
+threshold: 90
+minimum_slide_message_score: 85
+weights: {content_accuracy: 0.30, narrative_clarity: 0.20, visual_hierarchy: 0.15, layout_integrity: 0.15, brand_compliance: 0.10, editability: 0.05, source_integrity: 0.05}

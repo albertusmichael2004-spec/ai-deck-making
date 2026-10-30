@@ -1,0 +1,1 @@
+Golden fixtures must include the editable source deck, input/IR lineage, render engine/version/fonts, expected PNGs, permitted differences, and QA results. Baseline approval must be explicit in the fixture manifest. Real render fixtures begin in Phase 2.

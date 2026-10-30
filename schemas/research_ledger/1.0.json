@@ -1,0 +1,4 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["schema_version","time","event"],
+  "properties":{"schema_version":{"const":"1.0"},"time":{"type":"string"},"event":{"enum":["research_started","query_executed","query_cached","source_discovered","source_fetched","source_cached","source_rejected","source_accepted","finding_extracted","conflict_found","iteration","follow_up","research_stopped","provider_usage","hypothesis_update"]}}
+}

@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","research_id","decision_question","requested_mode","mode","external_allowed","questions","hypotheses","budgets","completion_policy"],
+  "properties":{
+    "schema_version":{"const":"1.0"},"research_id":{"type":"string","pattern":"^res_[a-f0-9]{32}$"},
+    "decision_question":{"type":"string","minLength":1},
+    "requested_mode":{"enum":["off","quick","standard","deep","exhaustive","auto"]},
+    "mode":{"enum":["off","quick","standard","deep","exhaustive"]},"external_allowed":{"type":"boolean"},
+    "questions":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["question_id","question","critical","preferred_source_types","max_age_days","period","geography","definition","answer_type"],"properties":{
+      "question_id":{"type":"string","minLength":1},"question":{"type":"string","minLength":1},"critical":{"type":"boolean"},
+      "preferred_source_types":{"type":"array","items":{"type":"string"}},"max_age_days":{"type":["integer","null"],"minimum":0},
+      "period":{"type":["string","null"]},"geography":{"type":["string","null"]},"definition":{"type":["string","null"]},"answer_type":{"enum":["text","numeric"]}
+    }}},
+    "hypotheses":{"type":"array","items":{"type":"object","required":["text"],"properties":{"text":{"type":"string","minLength":1}}}},
+    "budgets":{"type":"object","additionalProperties":false,"required":["max_queries","max_fetches","breadth","depth","max_iterations","max_seconds","max_tokens"],"properties":{
+      "max_queries":{"type":"integer","minimum":0},"max_fetches":{"type":"integer","minimum":0},"breadth":{"type":"integer","minimum":0},"depth":{"type":"integer","minimum":0},"max_iterations":{"type":"integer","minimum":0},"max_seconds":{"type":"number","minimum":0},"max_tokens":{"type":"integer","minimum":0}
+    }},
+    "completion_policy":{"type":"object","additionalProperties":false,"required":["critical_questions_required","unresolved_critical_conflicts_allowed"],"properties":{"critical_questions_required":{"const":true},"unresolved_critical_conflicts_allowed":{"const":false}}}
+  }
+}

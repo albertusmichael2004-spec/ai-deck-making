@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Studio: Run directly",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["${workspaceFolder}/run.py", "--in-terminal"],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {"PYTHONUTF8": "1"}
+      },
+      "group": {"kind": "build", "isDefault": true},
+      "presentation": {"reveal": "always", "focus": true, "panel": "dedicated"},
+      "problemMatcher": []
+    }
+  ]
+}
