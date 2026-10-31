@@ -8,6 +8,10 @@ def native_shapes(collection):
         if int(shape.Type)==6:yield from native_shapes(shape.GroupItems)
 
 
+def numbers(values):
+    return [None if value is None else float(value) for value in values]
+
+
 def text_metrics(shape):
     text=shape.TextFrame2.TextRange;formatted=shape.TextFrame.TextRange
     return {"text":str(text.Text),"text_bounds_pt":{"width":float(text.BoundWidth),"height":float(text.BoundHeight)},"line_count":int(formatted.Lines().Count),"runs":[{"font_pt":float(formatted.Runs(index,1).Font.Size),"font_name":str(formatted.Runs(index,1).Font.Name)} for index in range(1,int(formatted.Runs().Count)+1)],"margins_pt":{"left":float(shape.TextFrame2.MarginLeft),"right":float(shape.TextFrame2.MarginRight),"top":float(shape.TextFrame2.MarginTop),"bottom":float(shape.TextFrame2.MarginBottom)}}
@@ -27,11 +31,12 @@ def shape_metrics(shape):
             chart=shape.Chart;entry["chart_series"]=[];collection=chart.SeriesCollection()
             for index in range(1,int(collection.Count)+1):
                 series=collection.Item(index)
-                measured={"name":str(series.Name),"chart_type":int(series.ChartType),"values":[float(value) for value in series.Values],"categories":[str(value) for value in series.XValues],"labels":[]}
-                if int(series.ChartType) in {-4169,72,73,74,75,15,87}:measured["x_values"]=[float(value) for value in series.XValues]
+                # Empty chart cells come back as None; keep them as gaps, as OOXML inspection does.
+                measured={"name":str(series.Name),"chart_type":int(series.ChartType),"values":numbers(series.Values),"categories":["" if value is None else str(value) for value in series.XValues],"labels":[]}
+                if int(series.ChartType) in {-4169,72,73,74,75,15,87}:measured["x_values"]=numbers(series.XValues)
                 if int(chart.ChartType)==15:
                     sizes=series.BubbleSizes
-                    measured["sizes_formula" if isinstance(sizes,str) else "sizes"]=sizes if isinstance(sizes,str) else [float(value) for value in sizes]
+                    measured["sizes_formula" if isinstance(sizes,str) else "sizes"]=sizes if isinstance(sizes,str) else numbers(sizes)
                 for point_index in range(1,int(series.Points().Count)+1):
                     point=series.Points(point_index)
                     if bool(point.HasDataLabel):measured["labels"].append({"point_index":point_index-1,"text":str(point.DataLabel.Text),"font_pt":float(point.DataLabel.Font.Size)})

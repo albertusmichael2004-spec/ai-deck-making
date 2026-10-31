@@ -12,7 +12,7 @@ def execute(root,args):
     from research.plan import ResearchPlanner
     from research.engine import ResearchEngine
     from research.fetch import PublicHTTPFetcher
-    from research.provider import CodexProvider
+    from research.provider import inference_provider
     from state.project import Project
     from state.io import read_json
     project=Project.open(root,args.project_id)
@@ -26,5 +26,5 @@ def execute(root,args):
         from research.state import ResearchState
         ResearchState(project).start(plan)
         return plan
-    provider=CodexProvider(root)
+    provider=inference_provider(root)
     return ResearchEngine(root,project,provider,PublicHTTPFetcher(),provider).run(plan,refresh=args.refresh)

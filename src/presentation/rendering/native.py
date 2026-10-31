@@ -82,4 +82,8 @@ class NativeRenderer:
             slide["render"] = str(logical_path(target))
         artifact["input_sha256"] = before["sha256"]
         write_json(output / "render_report.json", artifact)
+        # The staging copy only serves timeout/failure diagnosis and recovery; after
+        # success every image lives in `output`, so drop it instead of letting
+        # deck copies and PNGs accumulate (and sync) under runtime/native_render.
+        shutil.rmtree(staging, ignore_errors=True)
         return artifact

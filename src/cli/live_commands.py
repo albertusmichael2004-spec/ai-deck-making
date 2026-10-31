@@ -54,7 +54,7 @@ def execute_local(root,args):
     from presentation.live.session import LiveSession
     from presentation.live.windows import WindowsLiveBackend
     from qa.critic import Critic
-    from research.provider import CodexProvider
+    from research.provider import inference_provider
     from state.project import Project
     project=Project.open(root,args.project_id);stored=project.path/"state/live_session.json"
     target=args.target
@@ -87,7 +87,7 @@ def execute_local(root,args):
                 if request is None:raise StudioError(ErrorCode.DATA_VALIDATION_ERROR,"Live revision/comment planning requires a structured request")
                 if args.action=="plan-comments":result=CommentBatch(root,session,None,None).plan(request["scope"],authors=args.author,slide_ids=args.slide,include_processed=args.include_processed,combine_selection=args.combine_selection)
                 else:
-                    provider=CodexProvider(root,240);critic=Critic(root,provider,KnowledgeStore(root))
+                    provider=inference_provider(root,240);critic=Critic(root,provider,KnowledgeStore(root))
                     if args.action=="apply-comments":result=CommentBatch(root,session,provider,critic).apply(request["plan"],request["spec"],copy_path=args.copy_path)
                     else:result=session.apply(request["patch"],request["scope"],request["spec"],critic,selection=request.get("selection"),copy_path=args.copy_path,transaction_id=args.transaction_id)
         if args.output:write_json(project.policy.check(args.output,write=True),result)

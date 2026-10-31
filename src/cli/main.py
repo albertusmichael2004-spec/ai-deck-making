@@ -28,6 +28,7 @@ PARSER_MODULES = (
     "cli.review_commands",
     "cli.offline_commands",
     "cli.live_commands",
+    "cli.annotate_commands",
 )
 COMMAND_MODULES = {
     **dict.fromkeys(["status", "capabilities", "bootstrap"], "cli.system_commands"),
@@ -42,6 +43,7 @@ COMMAND_MODULES = {
     **dict.fromkeys(["review", "feedback", "preferences"], "cli.review_commands"),
     "run": "cli.offline_commands",
     "live": "cli.live_commands",
+    "annotate": "cli.annotate_commands",
 }
 WINDOWS_LOW_MEMORY_ERRORS = {8, 14, 1450, 1455}
 

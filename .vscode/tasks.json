@@ -13,6 +13,15 @@
       "group": {"kind": "build", "isDefault": true},
       "presentation": {"reveal": "always", "focus": true, "panel": "dedicated"},
       "problemMatcher": []
+    },
+    {
+      "label": "Studio: Install VS Code extension (Run button + Deck Preview)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["${workspaceFolder}/scripts/install_vscode_extension.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "panel": "shared"},
+      "problemMatcher": []
     }
   ]
 }

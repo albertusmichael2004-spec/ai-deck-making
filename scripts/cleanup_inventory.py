@@ -99,10 +99,16 @@ def plan(test_run=None):
         for file in folder.glob("*.json"):
             observe(json.loads(file.read_text(encoding="utf-8")), "library provenance")
 
+    missing_fixtures = []
+
     def latest(prefix, predicate):
         matches = [p for p in projects if p.name.startswith(prefix) and predicate(p)]
         if not matches:
-            raise ValueError(f"Required benchmark fixture missing: {prefix}")
+            # Benchmark fixtures were archived on 2026-10-24 (docs/WORKSPACE_STORAGE.md);
+            # with none left in projects/ there is nothing to protect. Raising here
+            # also blocked test.ps1's per-run cleanup, leaking every test temp tree.
+            missing_fixtures.append(prefix)
+            return
         path = max(matches, key=lambda p: p.stat().st_mtime_ns)
         protected[f"projects/{path.name}"].add("current consulting benchmark")
 
@@ -186,7 +192,7 @@ def plan(test_run=None):
         if not resolved.is_relative_to(ROOT) or resolved == ROOT:
             raise ValueError(f"Cleanup outside workspace: {path}")
         removals.append({"path": relative, "absolute_path": str(resolved), "reason": reason, **inventory(path)})
-    return {"schema_version": "1.0", "created_at": datetime.now(timezone.utc).isoformat(), "root": str(ROOT), "removals": removals, "protected": {key: sorted(value) for key, value in sorted(protected.items())}, "totals": {key: sum(row[key] for row in removals) for key in ["files", "folders", "bytes"]}}
+    return {"schema_version": "1.0", "created_at": datetime.now(timezone.utc).isoformat(), "root": str(ROOT), "removals": removals, "protected": {key: sorted(value) for key, value in sorted(protected.items())}, "missing_benchmark_fixtures": missing_fixtures, "totals": {key: sum(row[key] for row in removals) for key in ["files", "folders", "bytes"]}}
 
 
 if __name__ == "__main__":

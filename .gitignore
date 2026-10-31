@@ -9,3 +9,40 @@ projects/*
 !projects/.gitkeep
 library/**
 !library/.gitkeep
+
+# Local agent / editor config with personal paths
+.codex/
+.vscode/settings.json
+
+# Implementation artifacts: backups, archives, reports and test-run output
+implementation/ARCHIVES/
+implementation/CHECKPOINTS/
+implementation/PHASE_REPORTS/
+implementation/CLEANUP_*.json
+implementation/*.xml
+
+# Office documents and generated decks, except golden test fixtures
+output/
+*.pptx
+*.potx
+*.xlsx
+*.docx
+*.pdf
+~$*
+!tests/golden/**
+
+# Secrets
+.env
+*.env
+*.key
+*.pem
+
+# Tool and OS noise
+*.log
+.coverage
+htmlcov/
+node_modules/
+*.vsix
+Thumbs.db
+desktop.ini
+.DS_Store

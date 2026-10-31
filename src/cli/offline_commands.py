@@ -10,8 +10,8 @@ def add_parser(commands):
 
 def execute(root,args):
     from orchestration.pipeline import OfflinePipeline
-    from research.provider import CodexProvider
+    from research.provider import inference_provider
     from state.io import read_json
     from state.project import Project
     project=Project.open(root,args.project_id)
-    return OfflinePipeline(root,project,CodexProvider(root,180)).execute(read_json(project.policy.check(args.request)),run_id=args.resume)
+    return OfflinePipeline(root,project,inference_provider(root,180)).execute(read_json(project.policy.check(args.request)),run_id=args.resume)

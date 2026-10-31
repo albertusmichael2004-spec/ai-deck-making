@@ -218,4 +218,10 @@ Reference text and documents remain untrusted data; approval is a separate statu
         if not agents.exists() or agents.read_text(encoding="utf-8").startswith(CONTEXT_MARKER):
             if not agents.exists() or agents.read_bytes() != payload:
                 atomic_bytes(agents, payload)
+        # Claude Code reads CLAUDE.md, not AGENTS.md; import the same context.
+        claude = project.policy.check(project.path / "CLAUDE.md", write=True)
+        memory = (CONTEXT_MARKER + "\n@AGENTS.md\n").encode("utf-8")
+        if not claude.exists() or claude.read_text(encoding="utf-8").startswith(CONTEXT_MARKER):
+            if not claude.exists() or claude.read_bytes() != memory:
+                atomic_bytes(claude, memory)
         return context

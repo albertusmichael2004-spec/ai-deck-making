@@ -76,7 +76,7 @@ class ProjectMenu:
         """Choose the existing Codex workflow or one of the explicit ingestion paths."""
         while True:
             self.write("\nAI Presentation Studio — pilih aktivitas")
-            self.write("[1] Mulai / lanjutkan Codex CLI")
+            self.write("[1] Mulai / lanjutkan Codex CLI atau Claude Code")
             self.write("[2] Ingest ulang Knowledge Base (panduan PDF, Markdown, JSON, CSV, dan lainnya)")
             self.write("[3] Impor PDF/data/dokumen sebagai bahan project")
             self.write("[4] Kelola Database / references PPT")
@@ -200,7 +200,7 @@ class ProjectMenu:
             metadata = self.workspaces.metadata(project)
             self.write(f"\nProject: {metadata['display_name']} | {len(metadata['imports'])} file")
             self.write("PPT kerja: " + ("tersedia" if project.canonical.is_file() else "akan dibuat pada build pertama"))
-            self.write("[1] Mulai chat Codex   [2] Lanjut chat terakhir\n[3] Tambah data/dokumen   [4] Tambah folder bahan\n[5] Tambah gambar/logo    [6] Impor PPT untuk dikerjakan\n[7] Lihat file   [B] Pilih/buat project lain   [Q] Keluar")
+            self.write("[1] Mulai chat Codex   [2] Lanjut chat terakhir\n[C] Mulai chat Claude Code   [L] Lanjut chat Claude terakhir\n[3] Tambah data/dokumen   [4] Tambah folder bahan\n[5] Tambah gambar/logo    [6] Impor PPT untuk dikerjakan\n[7] Lihat file   [B] Pilih/buat project lain   [Q] Keluar")
             self.write("[D] Database umum" + ("   [R] References project/bisnis ini" if metadata.get("category", "project") == "project" else ""))
             if metadata.get("category") == "others":
                 self.write("Hasil: output/Others  |  [8] Ekspor PPT tervalidasi")
@@ -211,6 +211,9 @@ class ProjectMenu:
                 if choice in {"1", "2"}:
                     code = self.launcher(self.workspaces, project, resume=choice == "2")
                     self.write("Kembali ke project. Data tersimpan." if code == 0 else "Codex berhenti dengan error; project tetap tersimpan. Pilih chat baru jika belum ada sesi untuk dilanjutkan.")
+                elif choice in {"c", "l"}:
+                    code = self.launcher(self.workspaces, project, resume=choice == "l", agent="claude")
+                    self.write("Kembali ke project. Data tersimpan." if code == 0 else "Claude Code berhenti dengan error; project tetap tersimpan. Jika belum login, jalankan Claude Code sekali lalu ketik /login.")
                 elif choice == "d":
                     self.database()
                 elif choice == "r" and metadata.get("category", "project") == "project":

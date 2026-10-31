@@ -17,7 +17,12 @@ For a Windows launch without waiting for VS Code extensions, double-click
 startup fails. `main.py` is an alias of `run.py`; both launch from other working
 directories too. The menu loads optional research, rendering and review engines
 only when requested. In VS Code, reload the window after changing workspace
-settings. The selected interpreter should be `.venv/Scripts/python.exe`.
+settings. The selected interpreter should be `.venv/Scripts/python.exe`. The
+workspace extension adds an instant **▶ Studio** button and a clickable
+**Deck Preview** for annotating slides; see [VS Code tools](docs/VSCODE.md).
+Each project can be worked on with Codex CLI or Claude Code; requests inside
+the Studio folder are approved automatically. See
+[agents, approvals and model providers](docs/AGENTS_AND_APPROVALS.md).
 Choose **D — Database** for shared references, or **R — References** inside a
 selected project/business. Only explicit project selection adds its own
 references to general search. See [Database workflow](docs/DATABASE.md).

@@ -17,10 +17,10 @@ def execute(root,args):
         from knowledge.store import KnowledgeStore
         from presentation.backends.ooxml import OOXMLBackend
         from qa.critic import Critic
-        from research.provider import CodexProvider
+        from research.provider import inference_provider
         from state.project import Project
         project=Project.open(root,args.project_id);candidate=project.policy.check(args.candidate or project.canonical);spec=read_json(project.policy.check(args.spec));rendered=read_json(project.policy.check(args.render_report));inspection=OOXMLBackend(root).inspect(candidate)
-        return Critic(root,CodexProvider(root),KnowledgeStore(root)).evaluate(spec,candidate,inspection,rendered,EvidenceContext(EvidenceStore(root,project).load(),project.policy),output=project.policy.check(args.output,write=True),max_tokens=args.max_tokens)
+        return Critic(root,inference_provider(root),KnowledgeStore(root)).evaluate(spec,candidate,inspection,rendered,EvidenceContext(EvidenceStore(root,project).load(),project.policy),output=project.policy.check(args.output,write=True),max_tokens=args.max_tokens)
     store=PreferenceStore(root)
     if args.command=="feedback":
         from security.paths import PathPolicy

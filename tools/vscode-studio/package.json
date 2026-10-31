@@ -1,0 +1,25 @@
+{
+  "name": "studio-vscode",
+  "displayName": "AI Presentation Studio",
+  "description": "Start Studio instantly and preview/annotate the current working deck for scoped AI revisions.",
+  "version": "0.2.0",
+  "publisher": "ai-presentation-studio",
+  "license": "UNLICENSED",
+  "engines": {"vscode": "^1.80.0"},
+  "categories": ["Other", "Visualization"],
+  "main": "./extension.js",
+  "activationEvents": ["*"],
+  "contributes": {
+    "commands": [
+      {"command": "studio.run", "title": "Run Studio", "category": "Studio", "icon": "$(play)"},
+      {"command": "studio.runOthers", "title": "Run Studio (quick edit / Others)", "category": "Studio"},
+      {"command": "studioPreview.open", "title": "Open Deck Preview", "category": "Studio"},
+      {"command": "studioPreview.refresh", "title": "Re-render Deck Preview", "category": "Studio"}
+    ],
+    "menus": {
+      "editor/title/run": [
+        {"command": "studio.run", "group": "navigation@-1", "when": "studio.workspace && resourceFilename =~ /^(run|main)\\.py$/"}
+      ]
+    }
+  }
+}

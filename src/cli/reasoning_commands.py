@@ -11,7 +11,7 @@ def add_parser(commands):
 def execute(root,args):
     from knowledge.store import KnowledgeStore
     from reasoning.engine import ReasoningEngine
-    from research.provider import CodexProvider
+    from research.provider import inference_provider
     from state.project import Project
     from state.io import read_json
     project=Project.open(root,args.project_id)
@@ -19,5 +19,5 @@ def execute(root,args):
     if args.strategy=="driver":
         from reasoning.strategies import DriverReasoningStrategy
         engine=ReasoningEngine(root,project,KnowledgeStore(root),strategy=DriverReasoningStrategy())
-    else:engine=ReasoningEngine(root,project,KnowledgeStore(root),CodexProvider(root))
+    else:engine=ReasoningEngine(root,project,KnowledgeStore(root),inference_provider(root))
     return engine.reason(**request)

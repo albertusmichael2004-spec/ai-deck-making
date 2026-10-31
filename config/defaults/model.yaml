@@ -1,6 +1,11 @@
 schema_version: '1.0'
+# Model CLI for Studio's own research, reasoning, Critic and live-comment calls:
+# codex_cli or claude_cli. STUDIO_MODEL_PROVIDER overrides it for one session;
+# the Claude Code launcher sets claude_cli unless that variable is already set.
 provider: codex_cli
 model: null
+# Optional Claude model alias or ID for claude_cli (null = Claude Code's default).
+claude_model: null
 reasoning_effort: high
 timeout_seconds: 120
 source: configured_user_model_when_available
