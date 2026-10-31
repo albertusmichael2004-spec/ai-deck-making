@@ -39,7 +39,7 @@ def write_codex_hooks(root):
 
 def claude_settings(root):
     """Inline --settings for Claude Code: the same policy as a PreToolUse hook."""
-    return json.dumps({"hooks": {"PreToolUse": [{"matcher": "*", "hooks": [{"type": "command", "command": hook_command(root), "timeout": 30}]}]}})
+    return json.dumps({"attribution": {"commit": "", "pr": ""}, "hooks": {"PreToolUse": [{"matcher": "*", "hooks": [{"type": "command", "command": hook_command(root), "timeout": 30}]}]}})
 
 
 def agent_environment(root, project, executable):

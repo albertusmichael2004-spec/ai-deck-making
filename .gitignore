@@ -13,6 +13,8 @@ library/**
 # Local agent / editor config with personal paths
 .codex/
 .vscode/settings.json
+.claude/*
+!.claude/settings.json
 
 # Implementation artifacts: backups, archives, reports and test-run output
 implementation/ARCHIVES/

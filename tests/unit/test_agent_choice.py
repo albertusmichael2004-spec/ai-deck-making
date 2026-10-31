@@ -33,6 +33,7 @@ def test_claude_command_uses_accept_edits_policy_hook_and_studio_instructions(re
     args = claude_launcher.command(repo, project, Path("claude.exe"), resume=True, prompt="edit slide 2")
     assert args[args.index("--permission-mode") + 1] == "acceptEdits"
     settings = json.loads(args[args.index("--settings") + 1])
+    assert settings["attribution"] == {"commit": "", "pr": ""}
     assert settings["hooks"]["PreToolUse"][0]["hooks"][0]["command"] == hook_command(repo)
     assert args[args.index("--append-system-prompt-file") + 1] == str(repo / "AGENTS.md")
     assert "--continue" in args and args[-1] == "edit slide 2"

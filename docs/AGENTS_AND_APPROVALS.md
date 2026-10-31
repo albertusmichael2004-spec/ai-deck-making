@@ -17,6 +17,15 @@ Codex reads the project's generated `AGENTS.md`; Claude Code reads the generated
 `AGENTS.md` as appended system instructions. A user-written `AGENTS.md` or
 `CLAUDE.md` is never overwritten.
 
+## Commit attribution
+
+The repository's `.claude/settings.json` disables automatic commit and pull-request
+attribution. Studio also passes those settings directly to Claude Code when it
+launches a project chat, alongside the existing permission hook. Commits retain
+the configured human author; the Claude Code integration remains available.
+See [contribution guidance](../CONTRIBUTING.md) and the official
+[attribution settings](https://code.claude.com/docs/en/settings#attribution-settings).
+
 ## Automatic approvals
 
 Both agents use one deterministic policy, `.codex/hooks/approval_policy.py`
